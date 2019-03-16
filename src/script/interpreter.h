@@ -91,8 +91,13 @@ enum
     //
     // See BIP112 for details
     SCRIPT_VERIFY_CHECKSEQUENCEVERIFY = (1U << 10),
+
+    // support BOLT opcode
+    //
+    //SCRIPT_VERIFY_BOLT = (1U << 11),
 };
 
+bool ValidateChannelOpen(const std::vector<unsigned char> &channelToken, const std::vector<unsigned char> &tx);
 bool CheckSignatureEncoding(const std::vector<unsigned char> &vchSig, unsigned int flags, ScriptError* serror);
 
 struct PrecomputedTransactionData
@@ -139,6 +144,12 @@ public:
     {
          return false;
     }
+
+    virtual bool CheckBoltToken(unsigned int nMode, const std::vector<unsigned char>& vToken) const
+    {
+         return false;
+    }
+
     virtual ~BaseSignatureChecker() {}
 };
 
@@ -159,6 +170,7 @@ public:
     bool CheckSig(const std::vector<unsigned char>& scriptSig, const std::vector<unsigned char>& vchPubKey, const CScript& scriptCode, uint32_t consensusBranchId) const;
     bool CheckLockTime(const CScriptNum& nLockTime) const;
     bool CheckSequence(const CScriptNum& nSequence) const;
+    bool CheckBoltToken(unsigned int nMode, const std::vector<unsigned char>& vToken) const;
 };
 
 class MutableTransactionSignatureChecker : public TransactionSignatureChecker

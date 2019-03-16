@@ -13,6 +13,9 @@
 #include "pubkey.h"
 #include "script/script.h"
 #include "uint256.h"
+#include "util.h"
+
+//#include <libbolt.h>
 
 using namespace std;
 
@@ -184,6 +187,13 @@ bool static IsDefinedHashtypeSignature(const valtype &vchSig) {
         return false;
 
     return true;
+}
+
+bool ValidateChannelOpen(const vector<unsigned char> &channelToken, const vector<unsigned char> &tx) {
+    unsigned char token[channelToken.size()];
+    std::copy(channelToken.begin(), channelToken.end(), token);
+
+    return false; // libbolt_validate_channel_open(token, tx);
 }
 
 bool CheckSignatureEncoding(const vector<unsigned char> &vchSig, unsigned int flags, ScriptError* serror) {
@@ -417,7 +427,7 @@ bool EvalScript(
                     break;
                 }
 
-                case OP_NOP1: case OP_NOP4: case OP_NOP5:
+                case OP_NOP1: case OP_NOP5:
                 case OP_NOP6: case OP_NOP7: case OP_NOP8: case OP_NOP9: case OP_NOP10:
                 {
                     if (flags & SCRIPT_VERIFY_DISCOURAGE_UPGRADABLE_NOPS)
@@ -971,6 +981,31 @@ bool EvalScript(
                 }
                 break;
 
+                case OP_BOLT:
+                {
+                    // ([channel mode] [token]
+                    if (stack.size() < 2)
+                        return set_error(serror, SCRIPT_ERR_INVALID_STACK_OPERATION);
+
+                    int vmode       = CScriptNum(stacktop(-2), fRequireMinimal).getint();
+                    valtype& vtoken = stacktop(-1);
+
+                    // check that mode is set to OPEN, CLOSE or DISPUTE
+                    if (vmode < 0 || vmode > 2) {
+                        return set_error(serror, SCRIPT_ERR_BOLT_VERIFY);
+                    }
+
+                    if (vmode == 2) {
+                       // TODO: may need additional ops to confirm
+                       // std::pair<int,int> res = checker.ResolveBoltDispute();
+                    } else {
+                        // open or close tx
+                        return checker.CheckBoltToken(vmode, vtoken);
+                    }
+                    return false;
+                }
+                break;
+
                 default:
                     return set_error(serror, SCRIPT_ERR_BAD_OPCODE);
             }
@@ -1182,6 +1217,7 @@ SigVersion SignatureHashVersion(const CTransaction& txTo)
     }
 }
 
+// TODO: may have to update the signature hash here for Bolt?
 uint256 SignatureHash(
     const CScript& scriptCode,
     const CTransaction& txTo,
@@ -1418,6 +1454,25 @@ bool TransactionSignatureChecker::CheckSequence(const CScriptNum& nSequence) con
     return true;
 }
 
+// OP_BOLT handler =>
+bool TransactionSignatureChecker::CheckBoltToken(unsigned int nMode, const std::vector<unsigned char>& vToken) const
+{
+    // channel opening so parse the
+    if (nMode == 0)
+    {
+        LogPrintf("BOLT: validate channel open arg len %d", vToken.size());
+        vector<unsigned char> *tx = new vector<unsigned char>();
+        // get the committed values from the tx
+        bool isValid = ValidateChannelOpen(vToken, *tx);
+        delete tx;
+        return isValid;
+    } else if (nMode == 1)
+    {
+        LogPrintf("BOLT: validate channel closing arg len %d", vToken.size());
+        //bool fSuccess = libbolt_validate_channel_close();
+    }
+    return false;
+}
 
 bool VerifyScript(
     const CScript& scriptSig,

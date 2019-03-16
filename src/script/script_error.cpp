@@ -51,6 +51,8 @@ const char* ScriptErrorString(const ScriptError serror)
             return "Negative locktime";
         case SCRIPT_ERR_UNSATISFIED_LOCKTIME:
             return "Locktime requirement not satisfied";
+        case SCRIPT_ERR_BOLT_VERIFY:
+            return "Script failed an OP_BOLT operation";
         case SCRIPT_ERR_SIG_HASHTYPE:
             return "Signature hash type missing or not understood";
         case SCRIPT_ERR_SIG_DER:
