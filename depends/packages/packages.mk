@@ -69,7 +69,7 @@ rust_crates := \
   crate_winapi_i686_pc_windows_gnu \
   crate_winapi \
   crate_winapi_x86_64_pc_windows_gnu
-rust_packages := rust $(rust_crates) librustzcash
+rust_packages := rust $(rust_crates) librustzcash libbolt
 proton_packages := proton
 zcash_packages := libsodium
 packages := boost openssl libevent zeromq $(zcash_packages) googletest
