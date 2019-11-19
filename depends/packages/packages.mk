@@ -46,6 +46,9 @@ rust_crates := \
   crate_opaque_debug \
   crate_ppv_lite86 \
   crate_proc_macro2 \
+  crate_protobuf \
+  crate_protobuf_codegen \
+  crate_protobuf_codegen_pure \
   crate_quote \
   crate_rand_chacha \
   crate_rand_core \
@@ -59,6 +62,7 @@ rust_crates := \
   crate_semver \
   crate_sha2 \
   crate_syn \
+  crate_subtle \
   crate_typenum \
   crate_unicode_xid \
   crate_wasi \

@@ -1,10 +1,11 @@
 package=librustzcash
 $(package)_version=0.2.0
-$(package)_download_path=https://github.com/zcash/$(package)/archive/
+# $(package)_download_path=https://github.com/zcash/$(package)/archive/
+$(package)_download_path=https://github.com/boltlabs-inc/$(package)/archive/
 $(package)_file_name=$(package)-$($(package)_git_commit).tar.gz
 $(package)_download_file=$($(package)_git_commit).tar.gz
-$(package)_sha256_hash=dfb80e9a57d944a91092094a423a8a6631e38b602b337aad5f98dc21002ca6dc
-$(package)_git_commit=a57dc7f47807ea50cb0a5deec9b84b3e7da11bc0
+$(package)_sha256_hash=bef66e1f3a0c98df4a5de7405a477dc893e8d555939683c91e926cc3234427f6
+$(package)_git_commit=b8cd0eb1e55e5cecf595f2aabe6a213be899c4e8
 $(package)_dependencies=rust
 ifeq ($(LIBRUSTZCASH_OVERRIDE),)
 $(package)_dependencies+=$(rust_crates)
