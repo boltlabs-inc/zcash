@@ -1,9 +1,9 @@
-package=crate_num_traits
-$(package)_crate_name=num-traits
-$(package)_version=0.2.10
+package=crate_proc_macro_hack
+$(package)_crate_name=proc-macro-hack
+$(package)_version=0.5.11
 $(package)_download_path=https://static.crates.io/crates/$($(package)_crate_name)
 $(package)_file_name=$($(package)_crate_name)-$($(package)_version).crate
-$(package)_sha256_hash=d4c81ffc11c212fa327657cb19dd85eb7419e163b5b076bede2bdb5c974c07e4
+$(package)_sha256_hash=ecd45702f76d6d3c75a80564378ae228a85f0b59d2f3ed43c91b4a69eb2ebfc5
 $(package)_crate_versioned_name=$($(package)_crate_name)
 
 define $(package)_preprocess_cmds

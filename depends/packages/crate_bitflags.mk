@@ -1,9 +1,9 @@
-package=crate_num_traits
-$(package)_crate_name=num-traits
-$(package)_version=0.2.10
+package=crate_bitflags
+$(package)_crate_name=bitflags
+$(package)_version=1.2.1
 $(package)_download_path=https://static.crates.io/crates/$($(package)_crate_name)
 $(package)_file_name=$($(package)_crate_name)-$($(package)_version).crate
-$(package)_sha256_hash=d4c81ffc11c212fa327657cb19dd85eb7419e163b5b076bede2bdb5c974c07e4
+$(package)_sha256_hash=cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693
 $(package)_crate_versioned_name=$($(package)_crate_name)
 
 define $(package)_preprocess_cmds

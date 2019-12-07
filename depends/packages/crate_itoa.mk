@@ -1,9 +1,9 @@
-package=crate_num_traits
-$(package)_crate_name=num-traits
-$(package)_version=0.2.10
+package=crate_itoa
+$(package)_crate_name=itoa
+$(package)_version=0.4.4
 $(package)_download_path=https://static.crates.io/crates/$($(package)_crate_name)
 $(package)_file_name=$($(package)_crate_name)-$($(package)_version).crate
-$(package)_sha256_hash=d4c81ffc11c212fa327657cb19dd85eb7419e163b5b076bede2bdb5c974c07e4
+$(package)_sha256_hash=501266b7edd0174f8530248f87f99c88fbe60ca4ef3dd486835b8d8d53136f7f
 $(package)_crate_versioned_name=$($(package)_crate_name)
 
 define $(package)_preprocess_cmds

@@ -1,9 +1,9 @@
-package=crate_num_traits
-$(package)_crate_name=num-traits
-$(package)_version=0.2.10
+package=crate_rand_pcg
+$(package)_crate_name=rand_pcg
+$(package)_version=0.1.2
 $(package)_download_path=https://static.crates.io/crates/$($(package)_crate_name)
 $(package)_file_name=$($(package)_crate_name)-$($(package)_version).crate
-$(package)_sha256_hash=d4c81ffc11c212fa327657cb19dd85eb7419e163b5b076bede2bdb5c974c07e4
+$(package)_sha256_hash=abf9b09b01790cfe0364f52bf32995ea3c39f4d2dd011eac241d2914146d0b44
 $(package)_crate_versioned_name=$($(package)_crate_name)
 
 define $(package)_preprocess_cmds

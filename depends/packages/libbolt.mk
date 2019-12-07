@@ -3,8 +3,8 @@ $(package)_version=0.3.0
 $(package)_download_path=https://github.com/boltlabs-inc/$(package)/archive/
 $(package)_file_name=$(package)-$($(package)_git_commit).tar.gz
 $(package)_download_file=$($(package)_git_commit).tar.gz
-$(package)_sha256_hash=b277e844b6ec106c4eb10e4d3265386ac2c2d51434c996e58ea352cc9b83c350
-$(package)_git_commit=bd050d7da6feaa32347be84996b4d7b8eca71136
+$(package)_sha256_hash=6c3de61d1e7931f10b4707a8bab8677a2bc679cf592ff7cd7b4f8b8f17f31993
+$(package)_git_commit=dd529f9871bb6a6220ba1f011ea9c09f17efa2cf
 $(package)_dependencies=rust
 ifeq ($(LIBBOLT_OVERRIDE),)
 $(package)_dependencies+=$(rust_crates)

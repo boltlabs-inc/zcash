@@ -1,9 +1,9 @@
-package=crate_num_traits
-$(package)_crate_name=num-traits
-$(package)_version=0.2.10
+package=crate_redox_syscall
+$(package)_crate_name=redox_syscall
+$(package)_version=0.1.56
 $(package)_download_path=https://static.crates.io/crates/$($(package)_crate_name)
 $(package)_file_name=$($(package)_crate_name)-$($(package)_version).crate
-$(package)_sha256_hash=d4c81ffc11c212fa327657cb19dd85eb7419e163b5b076bede2bdb5c974c07e4
+$(package)_sha256_hash=2439c63f3f6139d1b57529d16bc3b8bb855230c8efcc5d3a896c8bea7c3b1e84
 $(package)_crate_versioned_name=$($(package)_crate_name)
 
 define $(package)_preprocess_cmds

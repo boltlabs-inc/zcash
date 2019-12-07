@@ -14,6 +14,7 @@ rust_crates := \
   crate_block_padding \
   crate_byte_tools \
   crate_byteorder \
+  crate_cc \
   crate_c2_chacha \
   crate_cfg_if \
   crate_constant_time_eq \
@@ -34,9 +35,11 @@ rust_crates := \
   crate_generic_array \
   crate_getrandom \
   crate_hex \
+  crate_hermit_abi \
   crate_lazy_static \
   crate_libc \
   crate_log \
+  crate_itoa \
   crate_memoffset \
   crate_nodrop \
   crate_num_bigint \
@@ -50,6 +53,7 @@ rust_crates := \
   crate_protobuf_codegen \
   crate_protobuf_codegen_pure \
   crate_quote \
+  crate_ryu \
   crate_rand_chacha \
   crate_rand_core \
   crate_rand_hc \
@@ -57,19 +61,28 @@ rust_crates := \
   crate_rand_xorshift \
   crate_rand \
   crate_rustc_version \
+  crate_redox_syscall \
   crate_scopeguard \
   crate_semver_parser \
   crate_semver \
+  crate_serde \
+  crate_serde_with \
+  crate_serde_with_macros \
+  crate_serde_bytes \
+  crate_serde_derive \
+  crate_serde_json \
+  crate_secp256k1 \
   crate_sha2 \
   crate_syn \
   crate_subtle \
+  crate_time \
   crate_typenum \
   crate_unicode_xid \
   crate_wasi \
   crate_winapi_i686_pc_windows_gnu \
   crate_winapi \
   crate_winapi_x86_64_pc_windows_gnu
-rust_packages := rust $(rust_crates) librustzcash libbolt
+rust_packages := rust $(rust_crates) librustzcash
 proton_packages := proton
 zcash_packages := libsodium
 packages := boost openssl libevent zeromq $(zcash_packages) googletest

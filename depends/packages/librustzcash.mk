@@ -4,8 +4,8 @@ $(package)_version=0.2.0
 $(package)_download_path=https://github.com/boltlabs-inc/$(package)/archive/
 $(package)_file_name=$(package)-$($(package)_git_commit).tar.gz
 $(package)_download_file=$($(package)_git_commit).tar.gz
-$(package)_sha256_hash=bef66e1f3a0c98df4a5de7405a477dc893e8d555939683c91e926cc3234427f6
-$(package)_git_commit=b8cd0eb1e55e5cecf595f2aabe6a213be899c4e8
+$(package)_sha256_hash=d9178193b1439cbb3b1979721e1b1b21981c58d3df6719a203512bcbdb089848
+$(package)_git_commit=7a7cd600f12f10288a29d63aa9e22781e6679d3d
 $(package)_dependencies=rust
 ifeq ($(LIBRUSTZCASH_OVERRIDE),)
 $(package)_dependencies+=$(rust_crates)
@@ -53,7 +53,7 @@ define $(package)_stage_cmds
 endef
 
 else
-
+ 
 define $(package)_preprocess_cmds
   patch -p1 < $($(package)_patch_dir)/remove-dev-dependencies.diff && \
   mkdir .cargo && \
